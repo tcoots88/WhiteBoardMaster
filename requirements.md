@@ -1,7 +1,7 @@
 Software Requirements
 
 Vision
-Our vision is to create an application that aliviates developers from creating a whiteboard. With our app a developer will be able to easily place their toughts in a whiteboard with minimal effort. 
+Our vision is to create an application that alleviates developers from creating a whiteboard. With our app a developer will be able to easily place their thoughts in a whiteboard with minimal effort. 
 
 What is the vision of this product? 
  To create an application that aids developers to build a whiteboard. 
@@ -14,9 +14,9 @@ Why should we care about your product?
 
 Scope (In/Out)  
 IN - What will your product do
-The web app will provide an easy way for the user to create differnt whiteboards to solve differet problems. 
+The web app will provide an easy way for the user to create different whiteboards to solve different problems. 
 
-The app will provide text fields and images to allow users to easily create whtieboards. 
+The app will provide text fields and images to allow users to easily create whiteboards. 
 
 Users will be able to save their input values and print their whiteboards. 
 
@@ -31,14 +31,14 @@ MVP is for user be able to generate whiteboard sections and the functionality is
 
 
 What are your stretch goals?
-More datastructures like, 
+More data structures like, 
 Generate markdown from 
 
 
 Stretch
 What stretch goals are you going to aim for? 
-    Add more data structures like  stack,queue ,pseudoQueue.
-    Save data in MD file. 
+Add more data structures like  stack,queue ,pseudoQueue.
+Save data in MD file. 
 
 Functional Requirements
 A user can create an account and login.
@@ -48,7 +48,7 @@ A user can print whiteboard.
 
 Data Flow
 The user creates an account and login. 
-User can select preffered algorithm/data structure from root route.
+User can select preferred algorithm/data structure from root route.
 User can input data in form. 
 User can save data values to database.
 User can return to root to search previous whiteboard values.
@@ -63,4 +63,3 @@ Examples include:
 
 Security: Account login
 Testability: Test to see if user input saves to database.  
-
