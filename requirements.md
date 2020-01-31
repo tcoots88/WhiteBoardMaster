@@ -1,17 +1,18 @@
-#Software Requirements
-###Vision
+Software Requirements
+
+Vision
 Our vision is to create an application that aliviates developers from creating a whiteboard. With our app a developer will be able to easily place their toughts in a whiteboard with minimal effort. 
 
-###What is the vision of this product? 
-   To create an application that aids developers to build a whiteboard. 
+What is the vision of this product? 
+ To create an application that aids developers to build a whiteboard. 
 
-###What pain point does this project solve?
-    It transcribes your whiteboards for future usability. 
+What pain point does this project solve?
+ It transcribes your whiteboards for future usability. 
 
-###Why should we care about your product?
-    It will free developers time to solve code issues. 
+Why should we care about your product?
+  It will free developers time to solve code issues. 
 
-###Scope (In/Out)  
+Scope (In/Out)  
 IN - What will your product do
 The web app will provide an easy way for the user to create differnt whiteboards to solve differet problems. 
 
@@ -25,27 +26,27 @@ It will not fill in logic gaps.
 It will not save whiteboard images. 
 
 
-###Minimum Viable Product vs What will your MVP functionality be?
+Minimum Viable Product vs What will your MVP functionality be?
 MVP is for user be able to generate whiteboard sections and the functionality is to be able to print and save the values in the database. 
 
 
-###What are your stretch goals?
+What are your stretch goals?
 More datastructures like, 
 Generate markdown from 
 
 
-###Stretch
+Stretch
 What stretch goals are you going to aim for? 
     Add more data structures like  stack,queue ,pseudoQueue.
     Save data in MD file. 
 
-###Functional Requirements
+Functional Requirements
 A user can create an account and login.
 A user can save values in database.
 A user can view previous values saved in database.
 A user can print whiteboard.
 
-###Data Flow
+Data Flow
 The user creates an account and login. 
 User can select preffered algorithm/data structure from root route.
 User can input data in form. 
