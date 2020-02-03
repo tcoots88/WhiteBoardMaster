@@ -32,8 +32,7 @@ public class ApplicationUser implements UserDetails {
     */
     public ApplicationUser() {}
 
-    public ApplicationUser(List<Diagram> diagrams, String userName, String password, String firstName, String lastName) {
-        this.diagrams = diagrams;
+    public ApplicationUser(String userName, String password, String firstName, String lastName) {
         this.userName = userName;
         this.password = password;
         this.firstName = firstName;
@@ -46,10 +45,6 @@ public class ApplicationUser implements UserDetails {
     */
     public long getId() {
         return id;
-    }
-
-    public List<Diagram> getDiagrams() {
-        return diagrams;
     }
 
     public String getUserName() {
@@ -68,9 +63,6 @@ public class ApplicationUser implements UserDetails {
     /*
                                 SETTERS
     */
-    public void setDiagrams(List<Diagram> diagrams) {
-        this.diagrams = diagrams;
-    }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
