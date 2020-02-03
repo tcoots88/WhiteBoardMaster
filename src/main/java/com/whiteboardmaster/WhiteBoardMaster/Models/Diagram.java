@@ -1,4 +1,4 @@
-package Models;
+package com.whiteboardmaster.WhiteBoardMaster.Models;
 
 import javax.persistence.*;
 
