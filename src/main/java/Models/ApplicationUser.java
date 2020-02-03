@@ -32,7 +32,7 @@ public class ApplicationUser implements UserDetails {
     */
     public ApplicationUser() {}
 
-    public ApplicationUser(List<Diagram> diagrams, String userName, String password, String firstName, String lastName) {
+    public ApplicationUser(String userName, String password, String firstName, String lastName) {
         this.diagrams = diagrams;
         this.userName = userName;
         this.password = password;
