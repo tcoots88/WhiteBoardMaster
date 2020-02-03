@@ -1,9 +1,9 @@
-package Controllers;
+package com.whiteboardmaster.WhiteBoardMaster.Controllers;
 
-import Models.ApplicationUser;
-import Models.ApplicationUserRepository;
-import Models.Diagram;
-import Models.DiagramRepository;
+import com.whiteboardmaster.WhiteBoardMaster.Models.ApplicationUser;
+import com.whiteboardmaster.WhiteBoardMaster.Models.ApplicationUserRepository;
+import com.whiteboardmaster.WhiteBoardMaster.Models.Diagram;
+import com.whiteboardmaster.WhiteBoardMaster.Models.DiagramRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
