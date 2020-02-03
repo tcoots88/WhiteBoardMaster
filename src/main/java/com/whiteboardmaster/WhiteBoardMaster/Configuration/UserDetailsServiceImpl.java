@@ -1,6 +1,6 @@
-package Configuration;
+package com.whiteboardmaster.WhiteBoardMaster.Configuration;
 
-import Models.ApplicationUserRepository;
+import com.whiteboardmaster.WhiteBoardMaster.Models.ApplicationUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

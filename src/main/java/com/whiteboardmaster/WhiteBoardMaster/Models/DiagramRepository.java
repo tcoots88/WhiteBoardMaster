@@ -1,4 +1,4 @@
-package Models;
+package com.whiteboardmaster.WhiteBoardMaster.Models;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
