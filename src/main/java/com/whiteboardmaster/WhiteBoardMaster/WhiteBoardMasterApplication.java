@@ -15,7 +15,7 @@ import javax.imageio.ImageIO;
 @SpringBootApplication
 public class WhiteBoardMasterApplication
 {
-	//
+
 	public static void main(String[] args) {
 		SpringApplication.run(WhiteBoardMasterApplication.class, args);
 	}
