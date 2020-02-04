@@ -40,8 +40,7 @@ public class Board {
 
     }
 
-    public Board(ApplicationUser applicationUser, String problemDomain, String algorithm, String pseudoCode, String bigONotation, String verification, String code, String edgeCases, String inputAndOutput, String visual, String title) {
-        this.applicationUser = applicationUser;
+    public Board(String problemDomain, String algorithm, String pseudoCode, String bigONotation, String verification, String code, String edgeCases, String inputAndOutput, String visual, String title) {
         this.problemDomain = problemDomain;
         this.algorithm = algorithm;
         this.pseudoCode = pseudoCode;
