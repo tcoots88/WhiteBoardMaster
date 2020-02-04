@@ -77,7 +77,7 @@ public class ApplicationUser implements UserDetails {
                                 MUTATORS
     */
 
-    public void addDiagram(Board board){
+    public void addBoard(Board board){
         boards.add(board);
     }
 

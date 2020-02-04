@@ -6,6 +6,7 @@ import com.whiteboardmaster.WhiteBoardMaster.Models.Board;
 import com.whiteboardmaster.WhiteBoardMaster.Models.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
@@ -16,7 +17,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.security.Principal;
-
 
 
 @Controller
@@ -32,29 +32,37 @@ public class BoardController {
                     POST ROUTES
      */
 
-    static { System.setProperty("java.awt.headless", "false");}
+    static {
+        System.setProperty("java.awt.headless", "false");
+    }
 
-    @PostMapping("diagram/create")
-    public RedirectView createDiagram(Principal p, String problemDomain, String algorithm, String pseudoCode, String bigONotation, String verification, String code, String edgeCases, String inputAndOutput, String visual, String title) {
+    @PostMapping("/createBoard")
+    public String createBoard(Model m, String problemDomain, String algorithm, String pseudoCode, String bigONotation, String verification, String code, String edgeCases, String inputAndOutput, String visual, String title) {
+
+        Board newBoard = new Board(problemDomain, algorithm, pseudoCode, bigONotation, verification, code, edgeCases, inputAndOutput, visual, title);
+        m.addAttribute("board", newBoard);
+
+        return "whiteBoard";
+    }
+
+    @PostMapping("/saveBoard")
+    public RedirectView saveBoard(Board boardToSave, Principal p) {
 
         if (p != null) {
-            // get user and create new diagram
+            // get user and save board to their account
             ApplicationUser user = userRepository.findByUserName(p.getName());
-            Board newBoard = new Board(user, problemDomain, algorithm, pseudoCode, bigONotation, verification, code, edgeCases, inputAndOutput, visual, title);
-
-
+            boardToSave.setApplicationUser(user);
+            user.addBoard(boardToSave);
+            userRepository.save(user);
         }
 
-
-        return new RedirectView("/");
+        return new RedirectView("/whiteBoard");
     }
 
     @PostMapping("/generate")
-    public RedirectView generate()
-    {
+    public RedirectView generate() {
         System.out.println("CALLED");
-        try
-        {
+        try {
             Robot robot = new Robot();
             String format = "jpg";
             String fileName = "WhiteBoard." + format;
@@ -64,21 +72,22 @@ public class BoardController {
             ImageIO.write(generated_WhiteBoard, format, new File(fileName));
             //Change destination of file save to desktop
             System.out.println("A full screenshot saved!");
-        }
-        catch (AWTException | IOException e)
-        {
+        } catch (AWTException | IOException e) {
             System.err.println(e);
         }
         return new RedirectView("/whiteBoard");
     }
 
-    @GetMapping("/whiteBoard")
-    public String getWhiteBoard()
-    {
-        return "/whiteBoard";
-    }
 
-    /* //
+    /*
                     GET ROUTES
-     */
+    */
+    @GetMapping("/getBoard")
+    public String getBoardFromUserProfile(Principal p, Model m, long boardId) {
+
+        Board boardFromDataBase = boardRepository.getOne(boardId);
+        m.addAttribute("board", boardFromDataBase);
+
+        return "whiteBoard";
+    }
 }
