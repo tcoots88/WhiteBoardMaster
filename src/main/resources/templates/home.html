@@ -3,10 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>White Board Master | Home</title>
-    <link rel="stylesheet" th:href="@{/style.css}"/>
+    <link rel="stylesheet" th:href="@{/layout.css}"/>
+    <link rel="stylesheet" th:href="@{/home.css}"/>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Hello, [[${username}]]!</h1>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/logout">Logout</a></li>
+            <li><a href="/profile">[[${username}]]</a></li>
+        </ul>
+    </nav>
+    <div class="pageTitle">
+        <h1>Welcome to Whiteboard Master, [[${username}]]</h1>
+    </div>
 </body>
 </html>
