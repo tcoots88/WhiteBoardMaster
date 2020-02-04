@@ -23,7 +23,7 @@ public class HomeController {
     public String getHome(Principal p, Model m){
 
         if(p == null){
-            m.addAttribute("username", "New User");
+            m.addAttribute("username", "New user!");
         } else {
             m.addAttribute("username", p.getName());
         }
