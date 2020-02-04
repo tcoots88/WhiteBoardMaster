@@ -62,6 +62,9 @@ public class BoardController {
             Rectangle screen_Area = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
             BufferedImage generated_WhiteBoard = robot.createScreenCapture(screen_Area);
             ImageIO.write(generated_WhiteBoard, format, new File(fileName));
+
+
+
             //Change destination of file save to desktop
             System.out.println("A full screenshot saved!");
         }
