@@ -1,6 +1,11 @@
 package com.whiteboardmaster.WhiteBoardMaster.Models;
 
+import javax.imageio.ImageIO;
 import javax.persistence.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 @Entity
 public class Diagram {
@@ -26,6 +31,7 @@ public class Diagram {
     private String inputAndOutput;
     private String visual;
 
+//
 
     /*
                                 CONSTRUCTORS
@@ -137,4 +143,5 @@ public class Diagram {
     public String getVisual() {
         return visual;
     }
+
 }
