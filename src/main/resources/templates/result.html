@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>White Board Master | Main</title>
+    <link rel="stylesheet" th:href="@{/layout.css}"/>
+    <link rel="stylesheet" th:href="@{/result.css}"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/build">Whiteboard</a></li>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/logout">Logout</a></li>
+        <li><a href="/profile">[[${username}]]</a></li>
+    </ul>
+</nav>
+<div class="pageTitle">
+    <h1>result page</h1>
+</div>
+
+
+
+<div id="result">
+    <ul>
+        <li>Title: </li>
+        <li>Problem Domain: </li>
+        <li>Edge Cases: </li>
+        <li>Input And Output: </li>
+        <li>Visual: </li>
+        <li>Algorithm: </li>
+        <li>Pseudo Code: </li>
+        <li>Big O Notation</li>
+        <li>Code: </li>
+        <li>verification: </li>
+    </ul>
+</div>
+</body>
+</html>
