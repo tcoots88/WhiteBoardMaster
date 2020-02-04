@@ -98,7 +98,7 @@ public class BoardController {
     public String returnEmptyBoard()
     {
 
-        return "whiteboard";
+        return "result";
     }
 
     @GetMapping("/build")
