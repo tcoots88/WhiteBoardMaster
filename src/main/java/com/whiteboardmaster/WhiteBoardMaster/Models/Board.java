@@ -1,11 +1,21 @@
 package com.whiteboardmaster.WhiteBoardMaster.Models;
 
+import net.steppschuh.markdowngenerator.image.Image;
+import net.steppschuh.markdowngenerator.rule.HorizontalRule;
+import net.steppschuh.markdowngenerator.text.Text;
+import net.steppschuh.markdowngenerator.text.heading.Heading;
+
 import javax.imageio.ImageIO;
 import javax.persistence.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Collections;
 
 @Entity
 public class Board {
@@ -148,5 +158,38 @@ public class Board {
     }
 
     public String getTitle() { return title; }
+
+    public void toMarkDown() throws IOException {
+        StringBuilder md_String = new StringBuilder()
+                .append(new Heading("Summary", 1)).append("\n")
+                .append(new Text(this.problemDomain)).append("\n")
+                .append(new Text("                                               ")).append("\n")
+                .append(new Text("                                               ")).append("\n")
+                .append(new Heading("Description", 2)).append("\n")
+                .append(new Text(this.algorithm)).append("\n")
+                .append(new Text("                                               ")).append("\n")
+                .append(new Text("                                               ")).append("\n")
+                .append(new Heading("Approach & Efficiency", 2)).append("\n")
+                .append(new Text(this.pseudoCode)).append("\n")
+                .append(new Text(this.bigONotation)).append("\n")
+                .append(new Text("                                               ")).append("\n")
+                .append(new Text("                                               ")).append("\n")
+                .append(new Heading("Solution", 2)).append("\n")
+                .append(new Image("White Board", "WhiteBoard.png"));
+
+        String home = System.getProperty("user.home");
+        Path file = Paths.get(home + "/Downloads/" + "WhiteBoard.md");
+        Files.write(file, Collections.singleton(md_String), StandardCharsets.UTF_8);
+    }
+
+    public static void main(String[] args) throws IOException {
+        Board test_Board = new Board();
+        test_Board.problemDomain = "Test Problem Domain";
+        test_Board.algorithm = "Test Algorithm";
+        test_Board.pseudoCode = "This is Test Pseudo Code";
+        test_Board.bigONotation = "O(1)";
+
+        test_Board.toMarkDown();
+    }
 
 }
