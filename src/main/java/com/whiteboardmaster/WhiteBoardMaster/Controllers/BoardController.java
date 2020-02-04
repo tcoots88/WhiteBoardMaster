@@ -42,7 +42,7 @@ public class BoardController {
         Board newBoard = new Board(problemDomain, algorithm, pseudoCode, bigONotation, verification, code, edgeCases, inputAndOutput, visual, title);
         m.addAttribute("board", newBoard);
 
-        return "whiteBoard";
+        return "whiteboard";
     }
 
     @PostMapping("/saveBoard")
@@ -56,7 +56,7 @@ public class BoardController {
             userRepository.save(user);
         }
 
-        return new RedirectView("/whiteBoard");
+        return new RedirectView("/whiteboard");
     }
 
     @PostMapping("/generate")
@@ -78,7 +78,7 @@ public class BoardController {
         } catch (AWTException | IOException e) {
             System.err.println(e);
         }
-        return new RedirectView("/whiteBoard");
+        return new RedirectView("/whiteboard");
     }
 
 
@@ -91,6 +91,13 @@ public class BoardController {
         Board boardFromDataBase = boardRepository.getOne(boardId);
         m.addAttribute("board", boardFromDataBase);
 
-        return "whiteBoard";
+        return "whiteboard";
+    }
+
+    @GetMapping("/testboard")
+    public String returnEmptyBoard()
+    {
+
+        return "whiteboard";
     }
 }
