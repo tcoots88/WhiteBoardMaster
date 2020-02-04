@@ -3,10 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>White Board Master | Login and Sign up</title>
-    <link rel="stylesheet" th:href="@{/style.css}"/>
+    <link rel="stylesheet" th:href="@{/layout.css}"/>
+    <link rel="stylesheet" th:href="@{/login.css}"/>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Login page</h1>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="pageTitle">
+        <h1>Login</h1>
+    </div>
+    <div id="login">
+        <form action="/login" method="POST">
+            <input type="hidden" th:value="${userIdWeAreVisiting}" name="id">
+            <label><b>Username</b></label>
+            <input type="text" name="username" placeholder="Enter username" required >
+            <label><b>Password</b></label>
+            <input type="password" name="password" placeholder="Enter password" required >
+            <input type="submit" value="Login">
+        </form>
+    </div>
+    <br>
+    <div id="signup">
+        <h2>Sign up to Whiteboard Master</h2>
+        <p>Please fill in this form to create an account.</p>
+        <hr>
+        <form action="/user/register" method="post">
+            <label><b>Username</b></label>
+            <input type="text" name="userName" placeholder="Enter username" required>
+            <label><b>Password</b></label>
+            <input type="password" name="password" placeholder="Enter password" required>
+            <label><b>First Name</b></label>
+            <input type="text" name="firstName" placeholder="Enter first name">
+            <label><b>Last Name</b></label>
+            <input type="text" name="lastName" placeholder="Enter last name">
+            <input type="submit" value="Become a Whiteboard Coding Master">
+        </form>
+    </div>
 </body>
 </html>
