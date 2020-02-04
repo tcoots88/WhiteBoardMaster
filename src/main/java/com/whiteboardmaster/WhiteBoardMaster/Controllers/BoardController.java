@@ -100,4 +100,16 @@ public class BoardController {
 
         return "whiteboard";
     }
+
+    @GetMapping("/build")
+    public String displayWhiteboardForm(Principal p, Model m) {
+
+        return "whiteboard";
+    }
+
+    @GetMapping("/boards")
+    public String displayWhiteboardResultForm(Principal p, Model m) {
+
+        return "result";
+    }
 }
