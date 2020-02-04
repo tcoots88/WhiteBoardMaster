@@ -90,4 +90,10 @@ public class BoardController {
 
         return "whiteBoard";
     }
+
+    @GetMapping("/build")
+    public String displayWhiteboardForm(Principal p, Model m) {
+
+        return "whiteboard";
+    }
 }

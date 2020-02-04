@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <title>White Board Master | Main</title>
     <link rel="stylesheet" th:href="@{/layout.css}"/>
-    <link rel="stylesheet" th:href="@{/whiteBoard.css}"/>
+    <link rel="stylesheet" th:href="@{/whiteboard.css}"/>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 </head>
 <body>
     <nav>
         <ul>
             <li><a href="/">Home</a></li>
+            <li><a href="/build">Whiteboard</a></li>
             <li><a href="/login">Login</a></li>
             <li><a href="/logout">Logout</a></li>
             <li><a href="/profile">[[${username}]]</a></li>
@@ -19,9 +22,71 @@
     <div class="pageTitle">
         <h1>Whiteboard Master</h1>
     </div>
-      <form method="POST" action="/generate">
-        <button type="submit">Generate File</button>
-    </form>
 
+<!--      <form method="POST" action="/generate">-->
+<!--        <button type="submit">Generate File</button>-->
+<!--      </form>-->
+
+
+    <div id="whiteboardForm">
+        <form action="/createBoard">
+            <label><b>Title</b></label>
+            <input type="text" name="title" placeholder="Enter title">
+            <label><b>Problem Domain</b></label>
+            <input type="text" name="problemDomain" placeholder="Enter problem domain">
+            <label><b>Edge Cases</b></label>
+            <input type="text" name="edgeCases" placeholder="Enter edge cases">
+            <label><b>Input And Output</b></label>
+            <input type="text" name="inputAndOutput" placeholder="Enter input and output">
+
+            <label><b>Visual</b></label>
+            <div class="custom-select" style="width:200px;">
+                <select id="visualList">
+                    <option value="arrayInsert">Visual</option>
+                    <option value="arrayInsert">Array</option>
+                    <option value="arrayInsert">Linkedlist</option>
+                    <option value="arrayBinarySearch">Stack</option>
+                    <option value="arrayBinarySearch">Queue</option>
+                    <option value="arrayBinarySearch">Tree</option>
+                </select>
+                <img id="myImg" src="/images/profile/editor.png" width=100 height=100 >
+            </div>
+
+            <label><b>Algorithm</b></label>
+            <input type="text" name="algorithm" placeholder="Enter algorithm">
+            <label><b>PseudoCode</b></label>
+            <input type="text" name="pseudoCode" placeholder="Enter pseudoCode">
+
+            <label><b>Big O Notation</b></label>
+            <div class="custom-select" style="width:200px;">
+                <select>
+                    <option value="0">Big O Notation</option>
+                    <option value="O(n)">O(n)</option>
+                    <option value="O(log(n))">O(log(n))</option>
+                    <option value="O(n^2)">O(n^2)</option>
+                    <option value="O(n log n)">O(n log n)</option>
+                    <option value="O(1)">O(1)</option>
+                </select>
+            </div>
+<!--            <input type="text" name="bigONotation" placeholder="Enter big O Notation">-->
+
+            <label><b>Code</b></label>
+            <input type="text" name="code" placeholder="Enter code">
+            <label><b>verification</b></label>
+            <input type="text" name="verification" placeholder="Enter verification">
+
+            <input type="submit" value="Save">
+        </form>
+    </div>
+    <script>
+        var displayVisual = function () {
+            console.log("displayVisual");
+            document.getElementById('myImg').src = "/images/" + this.options[this.selectedIndex].value + ".png";
+        }
+
+        var visualList = document.getElementById('visualList');
+
+        visualList.addEventListener('change', displayVisual, false);
+    </script>
 </body>
 </html>
