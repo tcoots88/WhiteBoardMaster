@@ -1,8 +1,11 @@
 package com.whiteboardmaster.WhiteBoardMaster.Controllers;
 
+
 import com.whiteboardmaster.WhiteBoardMaster.Models.ApplicationUser;
 import com.whiteboardmaster.WhiteBoardMaster.Models.ApplicationUserRepository;
+import com.whiteboardmaster.WhiteBoardMaster.Controllers.ApplicationUserController;
 import com.whiteboardmaster.WhiteBoardMaster.Models.DiagramRepository;
+import com.whiteboardmaster.WhiteBoardMaster.WhiteBoardMasterApplication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -42,4 +45,5 @@ public class ApplicationUserController {
         }
         return new RedirectView("/");
     }
+
 }
