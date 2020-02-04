@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.IOException;
 
 @Entity
-public class Diagram {
+public class Board {
 
 
     /*
@@ -36,11 +36,11 @@ public class Diagram {
     /*
                                 CONSTRUCTORS
     */
-    public Diagram() {
+    public Board() {
 
     }
 
-    public Diagram(ApplicationUser applicationUser, String problemDomain, String algorithm, String pseudoCode, String bigONotation, String verification, String code, String edgeCases, String inputAndOutput, String visual) {
+    public Board(ApplicationUser applicationUser, String problemDomain, String algorithm, String pseudoCode, String bigONotation, String verification, String code, String edgeCases, String inputAndOutput, String visual) {
         this.applicationUser = applicationUser;
         this.problemDomain = problemDomain;
         this.algorithm = algorithm;
