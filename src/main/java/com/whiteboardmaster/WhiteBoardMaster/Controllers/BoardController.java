@@ -55,28 +55,6 @@ public class BoardController {
         return "result";
     }
 
-    @PostMapping("/generate")
-    public RedirectView generate() {
-        System.out.println("CALLED");
-        try {
-            Robot robot = new Robot();
-            String format = "jpg";
-            String fileName = "WhiteBoard." + format;
-            //Change constraints of rectangle to be containing window and not full window.
-            Rectangle screen_Area = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
-            BufferedImage generated_WhiteBoard = robot.createScreenCapture(screen_Area);
-            ImageIO.write(generated_WhiteBoard, format, new File(fileName));
-
-
-
-            //Change destination of file save to desktop
-            System.out.println("A full screenshot saved!");
-        } catch (AWTException | IOException e) {
-            System.err.println(e);
-        }
-        return new RedirectView("/whiteboard");
-    }
-
 
     /*
                     GET ROUTES
@@ -86,13 +64,6 @@ public class BoardController {
 
         Board boardFromDataBase = boardRepository.getOne(id);
         m.addAttribute("board", boardFromDataBase);
-
-        return "result";
-    }
-
-    @GetMapping("/testboard")
-    public String returnEmptyBoard()
-    {
 
         return "result";
     }
