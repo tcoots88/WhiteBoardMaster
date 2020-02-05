@@ -30,33 +30,27 @@ public class BoardController {
 
     /*
                     POST ROUTES
-     */
+    */
 
     static {
         System.setProperty("java.awt.headless", "false");
     }
 
     @PostMapping("/createBoard")
-    public String createBoard(Model m, String problemDomain, String algorithm, String pseudoCode, String bigONotation, String verification, String code, String edgeCases, String inputAndOutput, String visual, String title) {
+    public String createBoard(Model m, Principal p, String problemDomain, String algorithm, String pseudoCode, String bigOTimeNotation, String verification, String code, String edgeCases, String inputAndOutput, String visual, String title) {
 
-        Board newBoard = new Board(problemDomain, algorithm, pseudoCode, bigONotation, verification, code, edgeCases, inputAndOutput, visual, title);
+        Board newBoard = new Board(problemDomain, algorithm, pseudoCode, bigOTimeNotation, bigOTimeNotation, verification, code, edgeCases, inputAndOutput, visual, title);
         m.addAttribute("board", newBoard);
-
-        return "whiteboard";
-    }
-
-    @PostMapping("/saveBoard")
-    public RedirectView saveBoard(Board boardToSave, Principal p) {
 
         if (p != null) {
             // get user and save board to their account
             ApplicationUser user = userRepository.findByUserName(p.getName());
-            boardToSave.setApplicationUser(user);
-            user.addBoard(boardToSave);
+            newBoard.setApplicationUser(user);
+            boardRepository.save(newBoard);
+            user.addBoard(newBoard);
             userRepository.save(user);
         }
-
-        return new RedirectView("/whiteboard");
+        return "result";
     }
 
     @PostMapping("/generate")
@@ -91,7 +85,7 @@ public class BoardController {
         Board boardFromDataBase = boardRepository.getOne(boardId);
         m.addAttribute("board", boardFromDataBase);
 
-        return "whiteboard";
+        return "result";
     }
 
     @GetMapping("/testboard")
