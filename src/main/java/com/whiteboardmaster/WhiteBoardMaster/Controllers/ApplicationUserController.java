@@ -3,6 +3,7 @@ package com.whiteboardmaster.WhiteBoardMaster.Controllers;
 
 import com.whiteboardmaster.WhiteBoardMaster.Models.ApplicationUser;
 import com.whiteboardmaster.WhiteBoardMaster.Models.ApplicationUserRepository;
+import com.whiteboardmaster.WhiteBoardMaster.Models.Board;
 import com.whiteboardmaster.WhiteBoardMaster.Models.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 public class ApplicationUserController {
@@ -38,8 +40,17 @@ public class ApplicationUserController {
 
     @GetMapping("/profile")
     public String getMyPage(Principal p, Model m){
-        ApplicationUser theUser = userRepository.findByUserName(p.getName());
-        m.addAttribute("user", theUser);
+
+        if (p != null) {
+            // add user details to page
+            ApplicationUser user = userRepository.findByUserName(p.getName());
+            m.addAttribute("username", user.getUserName());
+            m.addAttribute("firstName", user.getFirstName());
+            m.addAttribute("lastName", user.getLastName());
+
+            List<Board> boards = user.getBoards();
+            m.addAttribute("boards", boards);
+        }
         return "profile";
     }
 
