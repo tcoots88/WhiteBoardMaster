@@ -36,10 +36,11 @@ public class BoardController {
         System.setProperty("java.awt.headless", "false");
     }
 
-    @PostMapping("/createBoard")
-    public String createBoard(Model m, Principal p, String problemDomain, String algorithm, String pseudoCode, String bigOTimeNotation, String verification, String code, String edgeCases, String inputAndOutput, String visual, String title) {
+    @PostMapping("/createAndSaveBoard")
+    public String createAndSaveBoard(Model m, Principal p, String problemDomain, String algorithm, String pseudoCode, String bigOTimeNotation, String verification, String code, String edgeCases, String inputAndOutput, String visual, String title) throws IOException {
 
         Board newBoard = new Board(problemDomain, algorithm, pseudoCode, bigOTimeNotation, bigOTimeNotation, verification, code, edgeCases, inputAndOutput, visual, title);
+        newBoard.toMarkDown();
         m.addAttribute("board", newBoard);
 
         if (p != null) {
