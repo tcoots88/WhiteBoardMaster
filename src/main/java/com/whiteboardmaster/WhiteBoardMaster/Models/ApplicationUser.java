@@ -19,7 +19,7 @@ public class ApplicationUser implements UserDetails {
     private long id;
 
     @OneToMany(mappedBy = "applicationUser")
-    private List<Diagram> diagrams;
+    private List<Board> boards;
 
     private String userName;
     private String password;
@@ -77,8 +77,8 @@ public class ApplicationUser implements UserDetails {
                                 MUTATORS
     */
 
-    public void addDiagram(Diagram diagram){
-        diagrams.add(diagram);
+    public void addBoard(Board board){
+        boards.add(board);
     }
 
 
