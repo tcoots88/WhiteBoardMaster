@@ -59,6 +59,8 @@ public class ApplicationUser implements UserDetails {
         return lastName;
     }
 
+    public List<Board> getBoards() { return boards; }
+
 
     /*
                                 SETTERS
