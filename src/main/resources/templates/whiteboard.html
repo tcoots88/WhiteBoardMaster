@@ -34,7 +34,7 @@
             </nav>
         </div>
 
-        <form class="form-horizontal" action="/createBoard" method="post">
+        <form class="form-horizontal" action="/createAndSaveBoard" method="post">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="form-group">
@@ -85,7 +85,7 @@
                 <div class="col-xs-4">
                     <div class="col-xs-12">
                         <div class="form-group">
-                            <label for="visual">Select list (select one):</label>
+                            <label for="visualList">Select list (select one):</label>
                             <select class="form-control" id="visualList" name="visual">
                                 <option value="arrayInsert">Visual</option>
                                 <option value="arrayInsert">Array</option>
@@ -109,8 +109,8 @@
                 <div class="col-xs-4">
                     <div class="col-xs-12">
                         <div class="form-group">
-                            <label for="bigOTimeNotaion">Big O Notation Time (select one):</label>
-                            <select class="form-control" name="bigOTimeNotaion">
+                            <label for="bigOTimeList">Big O Notation Time (select one):</label>
+                            <select class="form-control" name="bigOTimeNotation" id="bigOTimeList">
                                 <option value="0">Big O Time Notation</option>
                                 <option value="O(n)">O(n)</option>
                                 <option value="O(log(n))">O(log(n))</option>
@@ -121,8 +121,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="bigOSpaceNotaion">Big O Notation Space (select one):</label>
-                            <select class="form-control" name="bigOSpaceNotaion">
+                            <label for="bigOSpaceList">Big O Notation Space (select one):</label>
+                            <select class="form-control" name="bigOSpaceNotation" id="bigOSpaceList">
                                 <option value="0">Big O SpcaceNotation</option>
                                 <option value="O(n)">O(n)</option>
                                 <option value="O(log(n))">O(log(n))</option>
@@ -145,13 +145,6 @@
                     <div class="col-xs-12">
                         <div class="form-group">     
                             <button type="submit" class="btn btn-default btn-lg btn-block">Save + Download</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-6">
-                    <div class="col-xs-12">
-                        <div class="form-group">     
-                            <button type="submit" class="btn btn-default btn-lg btn-block">Download</button>
                         </div>
                     </div>
                 </div>
