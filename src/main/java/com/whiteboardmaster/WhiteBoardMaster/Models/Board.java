@@ -189,18 +189,8 @@ public class Board {
                 .append(new Image("White Board", "WhiteBoard.png"));
 
         String home = System.getProperty("user.home");
-        Path file = Paths.get(home + "/Downloads/" + "WhiteBoard.md");
+        Path file = Paths.get(home + "/Downloads/" + "README.md");
         Files.write(file, Collections.singleton(md_String), StandardCharsets.UTF_8);
-    }
-
-    public static void main(String[] args) throws IOException {
-        Board test_Board = new Board();
-        test_Board.problemDomain = "Test Problem Domain";
-        test_Board.algorithm = "Test Algorithm";
-        test_Board.pseudoCode = "This is Test Pseudo Code";
-        test_Board.bigOSpaceNotation = "O(1)";
-
-        test_Board.toMarkDown();
     }
 
 }
