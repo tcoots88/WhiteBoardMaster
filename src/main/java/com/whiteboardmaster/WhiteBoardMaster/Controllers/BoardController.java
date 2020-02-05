@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -80,10 +81,10 @@ public class BoardController {
     /*
                     GET ROUTES
     */
-    @GetMapping("/getBoard")
-    public String getBoardFromUserProfile(Principal p, Model m, long boardId) {
+    @GetMapping("/board/{id}")
+    public String getBoardFromUserProfile(@PathVariable long id, Principal p, Model m) {
 
-        Board boardFromDataBase = boardRepository.getOne(boardId);
+        Board boardFromDataBase = boardRepository.getOne(id);
         m.addAttribute("board", boardFromDataBase);
 
         return "result";
