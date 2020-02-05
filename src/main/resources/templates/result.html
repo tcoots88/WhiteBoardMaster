@@ -3,45 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <title>White Board Master | Main</title>
-    <link rel="stylesheet" th:href="@{/layout.css}"/>
-    <link rel="stylesheet" th:href="@{/result.css}"/>
+    <!-- <link rel="stylesheet" th:href="@{/layout.css}"/>
+    <link rel="stylesheet" th:href="@{/result.css}"/> -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script
-            src="https://code.jquery.com/jquery-3.4.1.slim.js"
-            integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI="
-            crossorigin="anonymous"></script>
+        src="https://code.jquery.com/jquery-3.4.1.slim.js"
+        integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI="
+        crossorigin="anonymous"></script>
     <script type="text/javascript" src="/js/html2canvas.min.js"></script>
 </head>
 <body>
-<nav>
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/build">Whiteboard</a></li>
-        <li><a href="/login">Login</a></li>
-        <li><a href="/logout">Logout</a></li>
-        <li><a href="/profile">[[${username}]]</a></li>
-    </ul>
-</nav>
-<div class="pageTitle">
-    <h1>result page</h1>
-</div>
+    <div class="container">
+        <div class="row">
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                    <a class="navbar-brand" href="/">Whiteboard Master</a>
+                  </div>
+                  <ul class="nav navbar-nav">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/build">Whiteboard</a></li>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                    <li><a href="/profile">[[${username}]]</a></li>
+                  </ul>
+                </div>
+            </nav>
+        </div>
+
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">Title</div>
+                <div class="panel-body">
+                    Title content
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-6 col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Problem Domain</h3>
+                    </div>
+                    <div class="panel-body">
+                        Problem Domain content
+                    </div>
+                </div>
+        
+                <div class="panel panel-default">
+                    <div class="panel-heading">Input And Output</div>
+                    <div class="panel-body">
+                        Input And Output content
+                    </div>
+                </div>
+        
+                <div class="panel panel-default">
+                    <div class="panel-heading">Edge Cases</div>
+                    <div class="panel-body">
+                        Edge Cases content
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6 col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Algorithm</div>
+                    <div class="panel-body">
+                        Algorithm content
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-xs-6 col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Code</div>
+                    <div class="panel-body">
+                        Code content
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-6 col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Visual</div>
+                    <div class="panel-body">
+                        Visual content
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6 col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Pseudo Code</div>
+                    <div class="panel-body">
+                        Pseudo Code content
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6 col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Big O Notation Time</div>
+                    <div class="panel-body">
+                        Big O Notation Time content
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">Big O Notation Space</div>
+                    <div class="panel-body">
+                        Big O Notation Space content
+                    </div>
+                </div>
+        
+                <div class="panel panel-default">
+                    <div class="panel-heading">verification</div>
+                    <div class="panel-body">
+                        verification content
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 
-<div id="result">
-    <ul>
-        <li>Title: </li>
-        <li>Problem Domain: </li>
-        <li>Edge Cases: </li>
-        <li>Input And Output: </li>
-        <li>Visual: </li>
-        <li>Algorithm: </li>
-        <li>Pseudo Code: </li>
-        <li>Big O Notation</li>
-        <li>Code: </li>
-        <li>verification: </li>
-    </ul>
-</div>
+
+    </div>
 </body>
 <footer>
     <script type="text/javascript" src="/js/generateImage.js"></script>
