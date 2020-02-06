@@ -34,7 +34,8 @@ public class Board {
     private String problemDomain;
     private String algorithm;
     private String pseudoCode;
-    private String bigONotation;
+    private String bigOTimeNotation;
+    private String bigOSpaceNotation;
     private String verification;
     private String code;
     private String edgeCases;
@@ -50,11 +51,12 @@ public class Board {
 
     }
 
-    public Board(String problemDomain, String algorithm, String pseudoCode, String bigONotation, String verification, String code, String edgeCases, String inputAndOutput, String visual, String title) {
+    public Board(String problemDomain, String algorithm, String pseudoCode, String bigOTimeNotation, String bigOSpaceNotation, String verification, String code, String edgeCases, String inputAndOutput, String visual, String title) {
         this.problemDomain = problemDomain;
         this.algorithm = algorithm;
         this.pseudoCode = pseudoCode;
-        this.bigONotation = bigONotation;
+        this.bigOTimeNotation = bigOTimeNotation;
+        this.bigOSpaceNotation = bigOSpaceNotation;
         this.verification = verification;
         this.code = code;
         this.edgeCases = edgeCases;
@@ -83,8 +85,12 @@ public class Board {
         this.pseudoCode = pseudoCode;
     }
 
-    public void setBigONotation(String bigONotation) {
-        this.bigONotation = bigONotation;
+    public void setBigOTimeNotation(String bigOTimeNotation) {
+        this.bigOTimeNotation = bigOTimeNotation;
+    }
+
+    public void setBigOSpaceNotation(String bigOSpaceNotation) {
+        this.bigOSpaceNotation = bigOSpaceNotation;
     }
 
     public void setVerification(String verification) {
@@ -133,8 +139,12 @@ public class Board {
         return pseudoCode;
     }
 
-    public String getBigONotation() {
-        return bigONotation;
+    public String getBigOTimeNotation() {
+        return bigOTimeNotation;
+    }
+
+    public String getBigOSpaceNotation() {
+        return bigOSpaceNotation;
     }
 
     public String getVerification() {
@@ -171,25 +181,16 @@ public class Board {
                 .append(new Text("                                               ")).append("\n")
                 .append(new Heading("Approach & Efficiency", 2)).append("\n")
                 .append(new Text(this.pseudoCode)).append("\n")
-                .append(new Text(this.bigONotation)).append("\n")
+                .append(new Text("Time: " + this.bigOTimeNotation)).append("\n")
+                .append(new Text("Space: " + this.bigOSpaceNotation)).append("\n")
                 .append(new Text("                                               ")).append("\n")
                 .append(new Text("                                               ")).append("\n")
                 .append(new Heading("Solution", 2)).append("\n")
                 .append(new Image("White Board", "WhiteBoard.png"));
 
         String home = System.getProperty("user.home");
-        Path file = Paths.get(home + "/Downloads/" + "WhiteBoard.md");
+        Path file = Paths.get(home + "/Downloads/" + "README-" + this.title + ".md");
         Files.write(file, Collections.singleton(md_String), StandardCharsets.UTF_8);
-    }
-
-    public static void main(String[] args) throws IOException {
-        Board test_Board = new Board();
-        test_Board.problemDomain = "Test Problem Domain";
-        test_Board.algorithm = "Test Algorithm";
-        test_Board.pseudoCode = "This is Test Pseudo Code";
-        test_Board.bigONotation = "O(1)";
-
-        test_Board.toMarkDown();
     }
 
 }

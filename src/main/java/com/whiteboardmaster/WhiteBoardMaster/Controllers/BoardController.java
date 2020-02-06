@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -30,73 +31,41 @@ public class BoardController {
 
     /*
                     POST ROUTES
-     */
+    */
 
     static {
         System.setProperty("java.awt.headless", "false");
     }
 
-    @PostMapping("/createBoard")
-    public String createBoard(Model m, String problemDomain, String algorithm, String pseudoCode, String bigONotation, String verification, String code, String edgeCases, String inputAndOutput, String visual, String title) {
+    @PostMapping("/createAndSaveBoard")
+    public String createAndSaveBoard(Model m, Principal p, String problemDomain, String algorithm, String pseudoCode, String bigOTimeNotation, String verification, String code, String edgeCases, String inputAndOutput, String visual, String title) throws IOException {
 
-        Board newBoard = new Board(problemDomain, algorithm, pseudoCode, bigONotation, verification, code, edgeCases, inputAndOutput, visual, title);
+        Board newBoard = new Board(problemDomain, algorithm, pseudoCode, bigOTimeNotation, bigOTimeNotation, verification, code, edgeCases, inputAndOutput, visual, title);
+        newBoard.toMarkDown();
         m.addAttribute("board", newBoard);
-
-        return "whiteboard";
-    }
-
-    @PostMapping("/saveBoard")
-    public RedirectView saveBoard(Board boardToSave, Principal p) {
 
         if (p != null) {
             // get user and save board to their account
             ApplicationUser user = userRepository.findByUserName(p.getName());
-            boardToSave.setApplicationUser(user);
-            user.addBoard(boardToSave);
+            newBoard.setApplicationUser(user);
+            boardRepository.save(newBoard);
+            user.addBoard(newBoard);
             userRepository.save(user);
         }
-
-        return new RedirectView("/whiteboard");
-    }
-
-    @PostMapping("/generate")
-    public RedirectView generate() {
-        System.out.println("CALLED");
-        try {
-            Robot robot = new Robot();
-            String format = "jpg";
-            String fileName = "WhiteBoard." + format;
-            //Change constraints of rectangle to be containing window and not full window.
-            Rectangle screen_Area = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
-            BufferedImage generated_WhiteBoard = robot.createScreenCapture(screen_Area);
-            ImageIO.write(generated_WhiteBoard, format, new File(fileName));
-
-
-
-            //Change destination of file save to desktop
-            System.out.println("A full screenshot saved!");
-        } catch (AWTException | IOException e) {
-            System.err.println(e);
-        }
-        return new RedirectView("/whiteboard");
+        return "result";
     }
 
 
     /*
                     GET ROUTES
     */
-    @GetMapping("/getBoard")
-    public String getBoardFromUserProfile(Principal p, Model m, long boardId) {
+    @GetMapping("/board/{id}")
+    public String getBoardFromUserProfile(@PathVariable long id, Principal p, Model m) throws IOException {
 
-        Board boardFromDataBase = boardRepository.getOne(boardId);
+        Board boardFromDataBase = boardRepository.getOne(id);
         m.addAttribute("board", boardFromDataBase);
 
-        return "whiteboard";
-    }
-
-    @GetMapping("/testboard")
-    public String returnEmptyBoard()
-    {
+        boardFromDataBase.toMarkDown();
 
         return "result";
     }

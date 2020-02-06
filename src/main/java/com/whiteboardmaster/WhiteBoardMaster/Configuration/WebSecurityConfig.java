@@ -31,14 +31,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
+    @Bean
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
+
+    @Override
     protected void configure(final HttpSecurity http) throws Exception {
         http
                     .cors().disable()
                     .csrf().disable()
                     .authorizeRequests()
-                    .antMatchers("/", "/*.css", "/whiteBoard").permitAll()
+                    .antMatchers("/", "/*.css", "/images/*.png","/login").permitAll()
                     .antMatchers(HttpMethod.POST, "/user/register").permitAll()
-                    .anyRequest().permitAll()
+                    .anyRequest().authenticated()
                 .and()
                     .formLogin()
                     .loginPage("/login")
@@ -47,11 +53,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .logout()
                     .logoutUrl("/logout")
                     .logoutSuccessUrl("/");
-    }
-
-    @Override
-    @Bean
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
     }
 }

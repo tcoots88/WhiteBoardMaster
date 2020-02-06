@@ -3,27 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>White Board Master | Home</title>
-    <link rel="stylesheet" th:href="@{/layout.css}"/>
-    <link rel="stylesheet" th:href="@{/home.css}"/>
+    <!-- <link rel="stylesheet" th:href="@{/layout.css}"/>
+    <link rel="stylesheet" th:href="@{/home.css}"/> -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/build">Whiteboard</a></li>
-            <li><a href="/login">Login</a></li>
-            <li><a href="/logout">Logout</a></li>
-            <li><a href="/profile">[[${username}]]</a></li>
-        </ul>
-    </nav>
-    <div class="pageTitle">
-        <h1>Welcome to Whiteboard Master, [[${username}]]</h1>
-    </div>
-    <div>
-        <img src="/images/arrayInsert.png" alt="heroImg" height="300" width="450">
-        <a href="/build"><button>Start</button></a>
+    <div class="container">
+        <div class="row">
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                    <a class="navbar-brand" href="/">Whiteboard Master</a>
+                  </div>
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="/">Home</a></li>
+                    <li><a href="/build">Whiteboard</a></li>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                    <li><a href="/profile">[[${username}]]</a></li>
+                  </ul>
+                </div>
+            </nav>
+        </div>
+
+        <div class="pageTitle">
+            <h1>Welcome to Whiteboard Master, [[${username}]]</h1>
+        </div>
+
+        <div>
+            <img th:src="${heroImgSrc}" alt="heroImg" height="300" width="450">
+            <a href="/build"><button type="button" class="btn btn-primary btn-lg btn-block">Start</button></a>
+        </div>
 
     </div>
+
+
 </body>
 </html>
