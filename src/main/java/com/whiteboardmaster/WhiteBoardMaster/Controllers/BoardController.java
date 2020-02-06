@@ -114,8 +114,6 @@ public class BoardController {
         this.addUserNameToPage(p, m);
 
 
-        boardFromDataBase.toMarkDown(response);
-
         return "result";
     }
 
