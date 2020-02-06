@@ -31,13 +31,18 @@
             <h1>My saved algorithms:</h1>
         </div>
 
-        <h2>[[${user.username}]]'s profile:</h2>
+        <h2>[[${username}]]'s profile:</h2>
         <img src="/images/profile/graduated.png" alt="profile" height="100" width="100">
         <dl class="dl-horizontal" id="profile">
             <dt>First Name:</dt>
-            <dd>[[${user.firstName}]]</dd>
+            <dd>[[${firstName}]]</dd>
             <dt>Last Name:</dt>
-            <dd>[[${user.lastName}]]</dd>
+            <dd>[[${lastName}]]</dd>
+            <ul>
+                <li th:each="board : ${boards}">
+                    <p>[[${board.title}]]</p>
+                </li>
+            </ul>
         </dl>
 
 

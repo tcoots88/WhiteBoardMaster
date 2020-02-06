@@ -21,9 +21,11 @@ public class HomeController {
     public String getHome(Principal p, Model m){
 
         if(p == null){
-            m.addAttribute("username", "New user!");
+            m.addAttribute("username", "New user");
+            m.addAttribute("heroImgSrc", "/images/connection.png");
         } else {
             m.addAttribute("username", p.getName());
+            m.addAttribute("heroImgSrc", "/images/connection.png");
         }
 
         return "home";
