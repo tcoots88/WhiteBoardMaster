@@ -189,7 +189,7 @@ public class Board {
                 .append(new Image("White Board", "WhiteBoard.png"));
 
         String home = System.getProperty("user.home");
-        Path file = Paths.get(home + "/Downloads/" + "README.md");
+        Path file = Paths.get(home + "/Downloads/" + "README-" + this.title + ".md");
         Files.write(file, Collections.singleton(md_String), StandardCharsets.UTF_8);
     }
 
