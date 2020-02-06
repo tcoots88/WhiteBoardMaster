@@ -1,21 +1,14 @@
 package com.whiteboardmaster.WhiteBoardMaster.Models;
 
 import net.steppschuh.markdowngenerator.image.Image;
-import net.steppschuh.markdowngenerator.rule.HorizontalRule;
 import net.steppschuh.markdowngenerator.text.Text;
 import net.steppschuh.markdowngenerator.text.heading.Heading;
+import org.springframework.http.MediaType;
 
-import javax.imageio.ImageIO;
 import javax.persistence.*;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Collections;
 
 @Entity
 public class Board {
@@ -169,7 +162,7 @@ public class Board {
 
     public String getTitle() { return title; }
 
-    public void toMarkDown() throws IOException {
+    public String toMarkDown(HttpServletResponse response) throws IOException {
         StringBuilder md_String = new StringBuilder()
                 .append(new Heading("Summary", 1)).append("\n")
                 .append(new Text(this.problemDomain)).append("\n")
@@ -188,9 +181,16 @@ public class Board {
                 .append(new Heading("Solution", 2)).append("\n")
                 .append(new Image("White Board", "WhiteBoard.png"));
 
-        String home = System.getProperty("user.home");
-        Path file = Paths.get(home + "/Downloads/" + "README-" + this.title + ".md");
-        Files.write(file, Collections.singleton(md_String), StandardCharsets.UTF_8);
+
+        response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE);
+        response.setHeader("Content-Disposition","attachment;filename=README-" + title + ".md");
+        ServletOutputStream out = response.getOutputStream();
+        out.println(md_String.toString());
+        out.flush();
+        out.close();
+
+
+        return "result";
     }
 
 }
