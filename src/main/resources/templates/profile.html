@@ -39,7 +39,21 @@
             <dd>[[${lastName}]]</dd>
 
             <ul class="list-group">
-                <li th:each="board : ${boards}" class="list-group-item"><a th:href="'/board/'+${board.id}">[[${board.title}]]</a></li>
+                <li th:each="board : ${boards}" class="list-group-item">
+                    BOARD: [[${board.title}]]
+                    <form th:action="'/board/'+${board.id}" method="GET">
+                        <input type="submit" value="View">
+                    </form>
+                    <form action="/delete" method="GET">
+                        <input type="hidden" th:value="${board.id}" name="id">
+                        <input type="submit" value="Delete">
+                    </form>
+                    <form action="/update" method="GET">
+                        <input type="hidden" th:value="${board.id}" name="id">
+                        <input type="submit" value="Update">
+                    </form>
+                </li>
+
             </ul>
         </dl>
 

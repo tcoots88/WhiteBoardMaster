@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>White Board Master | Main</title>
+    <!--    <link rel="stylesheet" th:href="@{/layout.css}"/>-->
+    <!-- <link rel="stylesheet" th:href="@{/whiteboard.css}"/> -->
+    <link rel="stylesheet" href="../static/whiteboard.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.slim.js"
+            integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI="
+            crossorigin="anonymous">
+    </script>
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">Whiteboard Master</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="/">Home</a></li>
+                    <li class="active"><a href="/build">Whiteboard</a></li>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                    <li><a href="/profile">[[${username}]]</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <form class="form-horizontal" action="/updateAndSaveBoard" method="post">
+        <input type="hidden" th:value="${board.id}" name="id">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="title">Title:</label>
+                        <textarea class="form-control" placeholder="Enter title" name="title" id="title" cols="30" rows="2" required>[[${board.title}]]</textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="problemDomain">Problem Domain:</label>
+                        <textarea class="form-control" placeholder="Enter problem domain" name="problemDomain" id="problemDomain" cols="30" rows="6">[[${board.problemDomain}]]</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAndOutput">Input And Output:</label>
+                        <input type="text" class="form-control" id="inputAndOutput" placeholder="Enter input and output" name="inputAndOutput">
+                    </div>
+                    <div class="form-group">
+                        <label for="edgeCases">Edge Cases:</label>
+                        <input type="text" class="form-control" id="edgeCases" placeholder="Enter edge cases" name="edgeCases">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-4">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="algorithm">Algorithm:</label>
+                        <textarea class="form-control" placeholder="Enter algorithm" name="algorithm" id="algorithm" cols="30" rows="12">[[${board.algorithm}]]</textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-4">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="code">Code:</label>
+                        <textarea class="form-control" placeholder="Enter code" name="code" id="code" cols="30" rows="12">[[${board.code}]]</textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="visualList">Select list (select one):</label>
+                        <select class="form-control" id="visualList" name="visual">
+                            <option value="arrayInsert">Visual</option>
+
+                            <option value="array-shift-blank">Array Shift Blank</option>
+                            <option value="array-shift">Array Shift</option>
+                            <option value="arrayBinarySearch">Array Binary Search</option>
+                            <option value="arrayInsert">Array Insert</option>
+                            <option value="blank-array-binary-search">Array Binary Search Blank</option>
+                            <option value="blank-bst">Binary Search Tree Blank</option>
+                            <option value="blank-linked-list-append">Linked List Append Blank</option>
+                            <option value="blank-linked-list-insert-after">Linked List Insert After</option>
+                            <option value="blank-pseudo-deQueue">Pseudo deQueue Blank</option>
+                            <option value="blank-queue-enQueue">Queue enQueue Blank</option>
+                            <option value="blank-stack-pop">Stack Pop Blank</option>
+                            <option value="blank-stack-push">Stack Push Blank</option>
+                            <option value="bst-breadth-first">BST Breadth First</option>
+                            <option value="bst-depth-first">BST Depth First</option>
+                            <option value="bst-max-value">BST Max Value</option>
+                            <option value="bst-preOrder">BST PreOrder</option>
+                            <option value="linked-list-append">Linked List Append</option>
+                            <option value="linked-list-insert-after">Linked List Insert After</option>
+                            <option value="linked-list-insert-before">Linked List Insert Before</option>
+                            <option value="linked-list-kth-from-end">Linked List Kth From End</option>
+                            <option value="linked-list-merge-lists">Linked List Merge List</option>
+                            <option value="pseudo-deQueue">Pseudo deQueue</option>
+                            <option value="pseudo-enQueue">Pseudo enQueue</option>
+                            <option value="pseudo-queue">Pseudo Queue</option>
+                            <option value="queue-deQueue">Queue deQueue</option>
+                            <option value="queue-enQueue">Queue enQueue</option>
+                            <option value="queue-isEmpty">Queue isEmpty</option>
+                            <option value="queue-peek">Queue Peek</option>
+                            <option value="stack-is-empty">Stack Is Empty</option>
+                            <option value="stack-peek">Stack Peek</option>
+                            <option value="stack-pop">Stack Pop</option>
+                            <option value="stack-push">Stack Push</option>
+                        </select>
+                        <img id="myImg" src="/images/connection.png" width=340 style="margin-top: 5px;" >
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="pseudoCode">PseudoCode:</label>
+                        <textarea class="form-control" placeholder="Enter pseudoCode" name="pseudoCode" id="pseudoCode" cols="30" rows="12">[[${board.pseudoCode}]]</textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="bigOTimeList">Big O Notation Time (select one):</label>
+                        <select class="form-control" name="bigOTimeNotation" id="bigOTimeList">
+                            <option value="0">Big O Time Notation</option>
+                            <option value="O(n)">O(n)</option>
+                            <option value="O(log(n))">O(log(n))</option>
+                            <option value="O(n^2)">O(n^2)</option>
+                            <option value="O(n log n)">O(n log n)</option>
+                            <option value="O(1)">O(1)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bigOSpaceList">Big O Notation Space (select one):</label>
+                        <select class="form-control" name="bigOSpaceNotation" id="bigOSpaceList">
+                            <option value="0">Big O SpcaceNotation</option>
+                            <option value="O(n)">O(n)</option>
+                            <option value="O(n log n)">O(n log n)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="verification">Verification:</label>
+                        <textarea class="form-control" placeholder="Enter verification" name="verification" id="verification" cols="30" rows="6">[[${board.verification}]]</textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default btn-lg btn-block">Save + Download</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+        var displayVisual = function () {
+            console.log("displayVisual");
+            document.getElementById('myImg').src = "/images/" + this.options[this.selectedIndex].value + ".png";
+        }
+
+        var visualList = document.getElementById('visualList');
+
+        visualList.addEventListener('change', displayVisual, false);
+    </script>
+</body>
+
+<footer>
+
+</footer>
+
+
+</html>

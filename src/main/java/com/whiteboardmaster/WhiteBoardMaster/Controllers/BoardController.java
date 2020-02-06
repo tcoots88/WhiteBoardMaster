@@ -48,18 +48,13 @@ public class BoardController {
     /*
                     POST ROUTES
     */
-
-    static {
-        System.setProperty("java.awt.headless", "false");
-    }
-
     Board board;
 
 
     @PostMapping("/createAndSaveBoard")
-    public String createAndSaveBoard(Model m, Principal p, String problemDomain, String algorithm, String pseudoCode, String bigOTimeNotation, String verification, String code, String edgeCases, String inputAndOutput, String visual, String title, HttpServletResponse response) throws IOException {
+    public String createAndSaveBoard(Model m, Principal p, String problemDomain, String algorithm, String pseudoCode, String bigOTimeNotation, String bigOSpaceNotation, String verification, String code, String edgeCases, String inputAndOutput, String visual, String title, HttpServletResponse response) throws IOException {
 
-        Board newBoard = new Board(problemDomain, algorithm, pseudoCode, bigOTimeNotation, bigOTimeNotation, verification, code, edgeCases, inputAndOutput, visual, title);
+        Board newBoard = new Board(problemDomain, algorithm, pseudoCode, bigOTimeNotation, bigOSpaceNotation, verification, code, edgeCases, inputAndOutput, visual, title);
 
         m.addAttribute("board", newBoard);
         board = newBoard;
@@ -72,11 +67,34 @@ public class BoardController {
             user.addBoard(newBoard);
             userRepository.save(user);
         }
-
-
         this.addUserNameToPage(p, m);
 
         return "result";
+    }
+
+    @PostMapping("/updateAndSaveBoard")
+    public RedirectView updateBoard(Principal p, Model m, long id, String problemDomain, String algorithm, String pseudoCode, String bigOTimeNotation, String bigOSpaceNotation, String verification, String code, String edgeCases, String inputAndOutput, String visual, String title, HttpServletResponse response) {
+
+        Board boardToUpdate = boardRepository.getOne(id);
+
+        boardToUpdate.setProblemDomain(problemDomain);
+        boardToUpdate.setAlgorithm(algorithm);
+        boardToUpdate.setPseudoCode(pseudoCode);
+        boardToUpdate.setBigOTimeNotation(bigOTimeNotation);
+        boardToUpdate.setBigOSpaceNotation(bigOSpaceNotation);
+        boardToUpdate.setVerification(verification);
+        boardToUpdate.setCode(code);
+        boardToUpdate.setEdgeCases(edgeCases);
+        boardToUpdate.setInputAndOutput(inputAndOutput);
+        boardToUpdate.setVisual(visual);
+        boardToUpdate.setTitle(title);
+
+        boardRepository.save(boardToUpdate);
+
+        m.addAttribute("board", boardToUpdate);
+        this.addUserNameToPage(p, m);
+
+        return new RedirectView("/profile");
     }
 
     @PostMapping("/save")
@@ -101,8 +119,6 @@ public class BoardController {
     /*
                     GET ROUTES
     */
-
-
     @GetMapping("/board/{id}")
     public String getBoardFromUserProfile(@PathVariable long id, Principal p, Model m, HttpServletResponse response) throws IOException {
 
@@ -123,6 +139,25 @@ public class BoardController {
         this.addUserNameToPage(p, m);
 
         return "whiteboard";
+    }
+
+    @GetMapping("/delete")
+    public RedirectView deleteWhiteBoardFromUserProfile(long id) {
+
+        boardRepository.deleteById(id);
+
+        return new RedirectView("/profile");
+    }
+
+    @GetMapping("/update")
+    public String updateWhiteBoardFromUserProfile(long id, Principal p, Model m) {
+
+        Board boardToUpdate = boardRepository.getOne(id);
+        m.addAttribute("board", boardToUpdate);
+
+        this.addUserNameToPage(p, m);
+
+        return "whiteboardupdate";
     }
 
     private void addUserNameToPage(Principal p, Model m) {
