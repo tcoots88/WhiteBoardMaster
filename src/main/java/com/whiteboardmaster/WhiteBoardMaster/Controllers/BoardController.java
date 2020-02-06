@@ -60,10 +60,12 @@ public class BoardController {
                     GET ROUTES
     */
     @GetMapping("/board/{id}")
-    public String getBoardFromUserProfile(@PathVariable long id, Principal p, Model m) {
+    public String getBoardFromUserProfile(@PathVariable long id, Principal p, Model m) throws IOException {
 
         Board boardFromDataBase = boardRepository.getOne(id);
         m.addAttribute("board", boardFromDataBase);
+
+        boardFromDataBase.toMarkDown();
 
         return "result";
     }
