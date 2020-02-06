@@ -34,7 +34,10 @@ public class ApplicationUserController {
                         USER ROUTES
      */
     @GetMapping("/login")
-    public String showLoginForm(){
+    public String showLoginForm(Principal p, Model m){
+
+        this.addUserNameToPage(p, m);
+
         return "login";
     }
 
@@ -55,19 +58,27 @@ public class ApplicationUserController {
     }
 
     @PostMapping("/user/register")
-    public RedirectView register(HttpServletRequest request, String userName, String password, String firstName, String lastName) {
+    public RedirectView register(HttpServletRequest request, String username, String password, String firstName, String lastName) {
 
         // create user and add to database
-        ApplicationUser newUser = new ApplicationUser(userName, passwordEncoder.encode(password), firstName, lastName);
+        ApplicationUser newUser = new ApplicationUser(username, passwordEncoder.encode(password), firstName, lastName);
         userRepository.save(newUser);
 
         // auto-login feature after creating account
         try {
-            request.login(userName, password);
+            request.login(username, password);
         } catch (ServletException e) {
             e.printStackTrace();
         }
         return new RedirectView("/");
+    }
+
+    private void addUserNameToPage(Principal p, Model m) {
+        if (p != null) {
+            m.addAttribute("username", p.getName());
+        } else {
+            m.addAttribute("username", "New user");
+        }
     }
 
 }

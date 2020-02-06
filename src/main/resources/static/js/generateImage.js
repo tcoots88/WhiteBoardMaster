@@ -3,6 +3,7 @@
 	 setTimeout(function()
 	 {
 		 downloadImage();
+
 	 },1000)
  });
 
@@ -14,5 +15,9 @@
 		a.download = "WhiteBoard.png";
 		a.href =  canvas.toDataURL();
 		a.click();
+		document.getElementById("mdbutton").click();
 	});
+
+
+
  }
