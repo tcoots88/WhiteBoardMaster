@@ -32,16 +32,16 @@
         </div>
 
         <h2>[[${username}]]'s profile:</h2>
-        <img src="/images/profile/graduated.png" alt="profile" height="100" width="100">
         <dl class="dl-horizontal" id="profile">
+            <dt></dt>
+            <dd><img src="/images/profile/graduated.png" alt="profile" height="200" width="200"></dd>
             <dt>First Name:</dt>
             <dd>[[${firstName}]]</dd>
             <dt>Last Name:</dt>
             <dd>[[${lastName}]]</dd>
-            <ul>
-                <li th:each="board : ${boards}">
-                    <a th:href="'/board/'+${board.id}"><p>[[${board.title}]]</p></a>
-                </li>
+
+            <ul class="list-group">
+                <li th:each="board : ${boards}" class="list-group-item"><a th:href="'/board/'+${board.id}">[[${board.title}]]</a></li>
             </ul>
         </dl>
 
