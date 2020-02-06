@@ -3,47 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <title>White Board Master | Login and Sign up</title>
-    <link rel="stylesheet" th:href="@{/layout.css}"/>
-    <link rel="stylesheet" th:href="@{/login.css}"/>
+    <!-- <link rel="stylesheet" th:href="@{/layout.css}"/>
+    <link rel="stylesheet" th:href="@{/login.css}"/> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/build">Whiteboard</a></li>
-            <li><a href="/login">Login</a></li>
-            <li><a href="/logout">Logout</a></li>
-        </ul>
-    </nav>
-    <div class="pageTitle">
-        <h1>Login</h1>
-    </div>
-    <div id="login">
-        <form action="/login" method="POST">
+    <div class="container">
+        <div class="row">
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                    <a class="navbar-brand" href="/">Whiteboard Master</a>
+                  </div>
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="/">Home</a></li>
+                    <li><a href="/build">Whiteboard</a></li>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                    <li><a href="/profile">[[${username}]]</a></li>
+                  </ul>
+                </div>
+            </nav>
+        </div>
+
+        <h2>Login</h2>
+        <form class="form-horizontal" action="/login" method="post">
             <input type="hidden" th:value="${userIdWeAreVisiting}" name="id">
-            <label><b>Username</b></label>
-            <input type="text" name="username" placeholder="Enter username" required >
-            <label><b>Password</b></label>
-            <input type="password" name="password" placeholder="Enter password" required >
-            <input type="submit" value="Login">
+            <div class="form-group">
+              <label for="usernameLogin" class="col-sm-2 control-label">Username</label>
+              <div class="col-sm-10">
+                <input type="text" name="username" class="form-control" id="usernameLogin" placeholder="Username" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="passwordLogin" class="col-sm-2 control-label">Password</label>
+              <div class="col-sm-10">
+                <input type="password" name="password" class="form-control" id="passwordLogin" placeholder="Password" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">Log in</button>
+              </div>
+            </div>
         </form>
-    </div>
-    <br>
-    <div id="signup">
+        <hr>
         <h2>Sign up to Whiteboard Master</h2>
         <p>Please fill in this form to create an account.</p>
-        <hr>
-        <form action="/user/register" method="post">
-            <label><b>Username</b></label>
-            <input type="text" name="userName" placeholder="Enter username" required>
-            <label><b>Password</b></label>
-            <input type="password" name="password" placeholder="Enter password" required>
-            <label><b>First Name</b></label>
-            <input type="text" name="firstName" placeholder="Enter first name">
-            <label><b>Last Name</b></label>
-            <input type="text" name="lastName" placeholder="Enter last name">
-            <input type="submit" value="Become a Whiteboard Coding Master">
+        <form class="form-horizontal" action="/user/register" method="post">
+            <div class="form-group">
+                <label for="username" class="col-sm-2 control-label">Username</label>
+                <div class="col-sm-10">
+                    <input type="text" name="username" class="form-control" id="username" placeholder="Username">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-sm-2 control-label">Password</label>
+                <div class="col-sm-10">
+                    <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="firstName" class="col-sm-2 control-label">First Name</label>
+                <div class="col-sm-10">
+                    <input type="text" name="firstName" class="form-control" id="firstName" placeholder="First Name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="lastName" class="col-sm-2 control-label">Last Name</label>
+                <div class="col-sm-10">
+                    <input type="text" name="lastName" class="form-control" id="lastName" placeholder="Last Name">
+                </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">Become a Whiteboard Coding Master</button>
+              </div>
+            </div>
         </form>
     </div>
 </body>
