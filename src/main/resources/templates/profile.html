@@ -40,7 +40,7 @@
             <dd>[[${lastName}]]</dd>
             <ul>
                 <li th:each="board : ${boards}">
-                    <p>[[${board.title}]]</p>
+                    <a th:href="'/board/'+${board.id}"><p>[[${board.title}]]</p></a>
                 </li>
             </ul>
         </dl>
