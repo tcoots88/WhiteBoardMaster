@@ -34,7 +34,10 @@ public class ApplicationUserController {
                         USER ROUTES
      */
     @GetMapping("/login")
-    public String showLoginForm(){
+    public String showLoginForm(Principal p, Model m){
+
+        this.addUserNameToPage(p, m);
+
         return "login";
     }
 
@@ -68,6 +71,14 @@ public class ApplicationUserController {
             e.printStackTrace();
         }
         return new RedirectView("/");
+    }
+
+    private void addUserNameToPage(Principal p, Model m) {
+        if (p != null) {
+            m.addAttribute("username", p.getName());
+        } else {
+            m.addAttribute("username", "New user");
+        }
     }
 
 }

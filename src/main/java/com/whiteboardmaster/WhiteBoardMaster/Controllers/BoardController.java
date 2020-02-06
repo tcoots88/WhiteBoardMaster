@@ -10,12 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.view.RedirectView;
 
-import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.security.Principal;
 
@@ -52,6 +47,8 @@ public class BoardController {
             user.addBoard(newBoard);
             userRepository.save(user);
         }
+
+        this.addUserNameToPage(p, m);
         return "result";
     }
 
@@ -64,6 +61,7 @@ public class BoardController {
 
         Board boardFromDataBase = boardRepository.getOne(id);
         m.addAttribute("board", boardFromDataBase);
+        this.addUserNameToPage(p, m);
 
         boardFromDataBase.toMarkDown();
 
@@ -73,12 +71,16 @@ public class BoardController {
     @GetMapping("/build")
     public String displayWhiteboardForm(Principal p, Model m) {
 
+        this.addUserNameToPage(p, m);
+
         return "whiteboard";
     }
 
-    @GetMapping("/boards")
-    public String displayWhiteboardResultForm(Principal p, Model m) {
-
-        return "result";
+    private void addUserNameToPage(Principal p, Model m) {
+        if (p != null) {
+            m.addAttribute("username", p.getName());
+        } else {
+            m.addAttribute("username", "New user");
+        }
     }
 }
