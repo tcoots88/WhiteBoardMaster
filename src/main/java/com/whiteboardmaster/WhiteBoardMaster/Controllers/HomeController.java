@@ -22,10 +22,10 @@ public class HomeController {
 
         if(p == null){
             m.addAttribute("username", "New user");
-            m.addAttribute("heroImgSrc", "/images/whiteboardmaster2.png");
+            m.addAttribute("heroImgSrc", "/images/home.png");
         } else {
             m.addAttribute("username", p.getName());
-            m.addAttribute("heroImgSrc", "/images/whiteboardmaster2.png");
+            m.addAttribute("heroImgSrc", "/images/home.png");
         }
 
         return "home";
