@@ -37,6 +37,9 @@
         #profile {
             margin: 14px 0;
         }
+        .dl-horizontal dd {
+            width: 120px;
+        }
     </style>
 </head>
 <body>
@@ -72,8 +75,8 @@
                     <dd><p>[[${firstName}]]</p></dd>
                     <dt><p>Last Name:</p></dt>
                     <dd><p>[[${lastName}]]</p></dd>
-                    <dt><p>Solved:</p></dt>
-                    <dd><p>[[${boards.size()}]] data structures</p></dd>
+                    <dt><p>Completed <br>data structures:</p></dt>
+                    <dd><p>[[${boards.size()}]]</p></dd>
                 </dl>
             </div>
         </div>
