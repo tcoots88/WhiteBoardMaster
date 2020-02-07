@@ -21,6 +21,22 @@
         p {
             font-size: 1.4em;
         }
+        .list-group {
+            text-align: center;
+        }
+        .list-group img {
+            margin: 10px 0 0 0;
+        }
+        #crudForm {
+            margin: auto;
+            width: 35vw;
+        }
+        #crudForm button {
+            margin: 0 30px 0 20px;
+        }
+        #profile {
+            margin: 14px 0;
+        }
     </style>
 </head>
 <body>
@@ -46,49 +62,53 @@
             <pre><h1>[[${username}]]'s saved algorithms:</h1></pre>
         </div>
 
-        <dl class="dl-horizontal" id="profile">
-            <dt></dt>
-            <dd><img src="/images/profile/graduated.png" alt="profile" height="200" width="200"></dd>
-            <dt><p>First Name:</p></dt>
-            <dd><p>[[${firstName}]]</p></dd>
-            <dt><p>Last Name:</p></dt>
-            <dd><p>[[${lastName}]]</p></dd>
-
-            <ul class="list-group">
-                <li th:each="board : ${boards}" class="list-group-item">
-                    <code><a th:href="'/board/' + ${board.id}">[[${board.title}]]</a></code>
-                    <br>
-                    <img th:src="'/images/' + ${board.visual} + '.png'" alt="${board.visual}" width=340 >
-                    <div id="crudForm">
-                        <form class="form-horizontal" th:action="'/board/'+${board.id}" method="GET">
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-default">View</button>
-                                </div>
+        <div class="row text-center" id="profile">
+            <div class="col-xs-6">
+                <img src="/images/profile/graduated.png" alt="profile" height="200" width="200">
+            </div>
+            <div class="col-xs-6">
+                <dl class="dl-horizontal">
+                    <dt><p>First Name:</p></dt>
+                    <dd><p>[[${firstName}]]</p></dd>
+                    <dt><p>Last Name:</p></dt>
+                    <dd><p>[[${lastName}]]</p></dd>
+                    <dt><p>Solved:</p></dt>
+                    <dd><p>[[${boards.size()}]] data structures</p></dd>
+                </dl>
+            </div>
+        </div>
+        <ul class="list-group">
+            <li th:each="board : ${boards}" class="list-group-item">
+                <a th:href="'/board/' + ${board.id}" class="list-group-item"><code>[[${board.title}]]</code></a>
+                <img th:src="'/images/' + ${board.visual} + '.png'" alt="${board.visual}" width=490 >
+                <div id="crudForm">
+                    <form class="form-horizontal" th:action="'/board/'+${board.id}" method="GET">
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default btn-lg">View</button>
                             </div>
-                        </form>
-                        <form class="form-horizontal" action="/update" method="GET">
-                            <input type="hidden" th:value="${board.id}" name="id">
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-default">Update</button>
-                                </div>
+                        </div>
+                    </form>
+                    <form class="form-horizontal" action="/update" method="GET">
+                        <input type="hidden" th:value="${board.id}" name="id">
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default btn-lg">Update</button>
                             </div>
-                        </form>
-                        <form class="form-horizontal" action="/delete" method="GET">
-                            <input type="hidden" th:value="${board.id}" name="id">
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-default">Delete</button>
-                                </div>
+                        </div>
+                    </form>
+                    <form class="form-horizontal" action="/delete" method="GET">
+                        <input type="hidden" th:value="${board.id}" name="id">
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default btn-lg">Delete</button>
                             </div>
-                        </form>
-                    </div>
-                </li>
-            </ul>
-        </dl>
-        
-
+                        </div>
+                    </form>
+                </div>
+            </li>
+        </ul>
+    
     </div>
 </body>
 </html>
