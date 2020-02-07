@@ -10,9 +10,8 @@
             display: block;
             margin-left: auto;
             margin-right: auto;
-            width: 70%;
-            margin-top: 30px;
-            margin-bottom: 40px;
+            width: 60%;
+            margin-bottom: 30px;
         }
     </style>
 </head>
@@ -35,17 +34,12 @@
             </nav>
         </div>
 
-        <div class="pageTitle">
-            <h1>Welcome to Whiteboard Master, [[${username}]]</h1>
-        </div>
+        <code><h1>Welcome to Whiteboard Master [[${username}]]</h1></code>
 
         <div>
             <img th:src="${heroImgSrc}" class="img-responsive" alt="heroImg">
             <a href="/build"><button type="button" class="btn btn-default btn-lg btn-block">Start</button></a>
         </div>
-
     </div>
-
-
 </body>
 </html>

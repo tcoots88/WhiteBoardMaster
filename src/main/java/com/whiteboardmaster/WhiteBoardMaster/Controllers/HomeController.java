@@ -20,13 +20,12 @@ public class HomeController {
     @GetMapping("/")
     public String getHome(Principal p, Model m){
 
-        if(p == null){
-            m.addAttribute("username", "New user");
-            m.addAttribute("heroImgSrc", "/images/home.png");
+        if (p == null){
+            m.addAttribute("username", "");
         } else {
             m.addAttribute("username", p.getName());
-            m.addAttribute("heroImgSrc", "/images/home.png");
         }
+        m.addAttribute("heroImgSrc", "/images/home.png");
 
         return "home";
     }
