@@ -23,7 +23,7 @@ public class HomeController {
         if (p == null){
             m.addAttribute("username", "");
         } else {
-            m.addAttribute("username", ", " + p.getName());
+            m.addAttribute("username", p.getName());
         }
         m.addAttribute("heroImgSrc", "/images/home.png");
 
