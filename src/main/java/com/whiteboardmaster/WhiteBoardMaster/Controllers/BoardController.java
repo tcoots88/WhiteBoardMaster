@@ -1,5 +1,5 @@
 package com.whiteboardmaster.WhiteBoardMaster.Controllers;
-
+// there seems to be alot of unused imports, this could be cleaned up
 import com.whiteboardmaster.WhiteBoardMaster.Models.*;
 import com.whiteboardmaster.WhiteBoardMaster.Models.ApplicationUserRepository;
 import com.whiteboardmaster.WhiteBoardMaster.Models.Board;

@@ -1,5 +1,6 @@
 package com.whiteboardmaster.WhiteBoardMaster.Configuration;
-
+//Code review: consider a method for forgotten password recall or atleast display a message
+// additionally could add a method to account for edge case of unexpected capital letters
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

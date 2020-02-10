@@ -1,3 +1,5 @@
+//add drescriptions for readability
+
  $(document).ready(function ()
  {
 	 setTimeout(function()

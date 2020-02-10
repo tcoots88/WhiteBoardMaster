@@ -16,7 +16,7 @@ public class HomeController {
 
     @Autowired
     BoardRepository boardRepository;
-
+// there are no tests for home route
     @GetMapping("/")
     public String getHome(Principal p, Model m){
 

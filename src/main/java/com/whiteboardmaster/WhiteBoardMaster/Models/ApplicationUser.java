@@ -1,4 +1,5 @@
 package com.whiteboardmaster.WhiteBoardMaster.Models;
+// code review :  this is very well organized, and easy to read
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

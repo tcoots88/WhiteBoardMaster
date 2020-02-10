@@ -1,5 +1,5 @@
 package com.whiteboardmaster.WhiteBoardMaster.Models;
-
+// code review: nicely organized and good use of comments
 import net.steppschuh.markdowngenerator.image.Image;
 import net.steppschuh.markdowngenerator.text.Text;
 import net.steppschuh.markdowngenerator.text.heading.Heading;
